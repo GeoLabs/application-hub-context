@@ -1,0 +1,391 @@
+Only in ../../application-hub-context: .DS_Store
+Only in ../../application-hub-context/.git: COMMIT_EDITMSG
+diff -ru ../../application-hub-context/.git/HEAD ./.git/HEAD
+--- ../../application-hub-context/.git/HEAD	2026-04-14 09:17:05
++++ ./.git/HEAD	2026-04-14 09:45:21
+@@ -1 +1 @@
+-ref: refs/heads/feature/EOEPCA-540
++ref: refs/heads/main
+diff -ru ../../application-hub-context/.git/config ./.git/config
+--- ../../application-hub-context/.git/config	2026-04-14 09:17:05
++++ ./.git/config	2026-04-14 09:45:22
+@@ -6,11 +6,9 @@
+ 	ignorecase = true
+ 	precomposeunicode = true
+ [remote "origin"]
+-	url = https://github.com/EOEPCA/application-hub-context.git
+-	fetch = +refs/heads/main:refs/remotes/origin/main
++	url = git@github.com:GeoLabs/application-hub-context.git
++	fetch = +refs/heads/*:refs/remotes/origin/*
+ [branch "main"]
+ 	remote = origin
+ 	merge = refs/heads/main
+-	vscode-merge-base = origin/main
+-[branch "feature/EOEPCA-540"]
+ 	vscode-merge-base = origin/main
+Binary files ../../application-hub-context/.git/index and ./.git/index differ
+diff -ru ../../application-hub-context/.git/logs/HEAD ./.git/logs/HEAD
+--- ../../application-hub-context/.git/logs/HEAD	2026-04-14 09:23:32
++++ ./.git/logs/HEAD	2026-04-14 09:45:21
+@@ -1,3 +1 @@
+-0000000000000000000000000000000000000000 6d804aa34d04de5a3682a1ab8ecd548fb832ca96 Gérald Fenoy <gfenoy@users.noreply.github.com> 1775569728 +0200	clone: from https://github.com/EOEPCA/application-hub-context.git
+-6d804aa34d04de5a3682a1ab8ecd548fb832ca96 6d804aa34d04de5a3682a1ab8ecd548fb832ca96 Gérald Fenoy <gfenoy@users.noreply.github.com> 1776151025 +0200	checkout: moving from main to feature/EOEPCA-540
+-6d804aa34d04de5a3682a1ab8ecd548fb832ca96 cd0da27a11621f925ca6404e630fd320d437518f Gérald Fenoy <gfenoy@users.noreply.github.com> 1776151412 +0200	commit: Add hostpath profile to enable deployment on Apple silicon
++0000000000000000000000000000000000000000 6d804aa34d04de5a3682a1ab8ecd548fb832ca96 Gérald Fenoy <gfenoy@users.noreply.github.com> 1776152721 +0200	clone: from github.com:GeoLabs/application-hub-context.git
+Only in ../../application-hub-context/.git/logs/refs/heads: feature
+Only in ../../application-hub-context/.git/logs/refs/heads: gh-pages
+diff -ru ../../application-hub-context/.git/logs/refs/heads/main ./.git/logs/refs/heads/main
+--- ../../application-hub-context/.git/logs/refs/heads/main	2026-04-07 15:48:48
++++ ./.git/logs/refs/heads/main	2026-04-14 09:45:21
+@@ -1 +1 @@
+-0000000000000000000000000000000000000000 6d804aa34d04de5a3682a1ab8ecd548fb832ca96 Gérald Fenoy <gfenoy@users.noreply.github.com> 1775569728 +0200	clone: from https://github.com/EOEPCA/application-hub-context.git
++0000000000000000000000000000000000000000 6d804aa34d04de5a3682a1ab8ecd548fb832ca96 Gérald Fenoy <gfenoy@users.noreply.github.com> 1776152721 +0200	clone: from github.com:GeoLabs/application-hub-context.git
+diff -ru ../../application-hub-context/.git/logs/refs/remotes/origin/HEAD ./.git/logs/refs/remotes/origin/HEAD
+--- ../../application-hub-context/.git/logs/refs/remotes/origin/HEAD	2026-04-07 15:48:48
++++ ./.git/logs/refs/remotes/origin/HEAD	2026-04-14 09:45:21
+@@ -1 +1 @@
+-0000000000000000000000000000000000000000 6d804aa34d04de5a3682a1ab8ecd548fb832ca96 Gérald Fenoy <gfenoy@users.noreply.github.com> 1775569728 +0200	clone: from https://github.com/EOEPCA/application-hub-context.git
++0000000000000000000000000000000000000000 6d804aa34d04de5a3682a1ab8ecd548fb832ca96 Gérald Fenoy <gfenoy@users.noreply.github.com> 1776152721 +0200	clone: from github.com:GeoLabs/application-hub-context.git
+Only in ../../application-hub-context/.git/objects: 0d
+Only in ../../application-hub-context/.git/objects: 10
+Only in ../../application-hub-context/.git/objects: 15
+Only in ../../application-hub-context/.git/objects: 16
+Only in ../../application-hub-context/.git/objects: 17
+Only in ../../application-hub-context/.git/objects: 18
+Only in ../../application-hub-context/.git/objects: 1c
+Only in ../../application-hub-context/.git/objects: 1d
+Only in ../../application-hub-context/.git/objects: 1e
+Only in ../../application-hub-context/.git/objects: 22
+Only in ../../application-hub-context/.git/objects: 29
+Only in ../../application-hub-context/.git/objects: 2b
+Only in ../../application-hub-context/.git/objects: 33
+Only in ../../application-hub-context/.git/objects: 34
+Only in ../../application-hub-context/.git/objects: 3c
+Only in ../../application-hub-context/.git/objects: 3d
+Only in ../../application-hub-context/.git/objects: 3e
+Only in ../../application-hub-context/.git/objects: 45
+Only in ../../application-hub-context/.git/objects: 46
+Only in ../../application-hub-context/.git/objects: 49
+Only in ../../application-hub-context/.git/objects: 4b
+Only in ../../application-hub-context/.git/objects: 4f
+Only in ../../application-hub-context/.git/objects: 50
+Only in ../../application-hub-context/.git/objects: 56
+Only in ../../application-hub-context/.git/objects: 5c
+Only in ../../application-hub-context/.git/objects: 5f
+Only in ../../application-hub-context/.git/objects: 61
+Only in ../../application-hub-context/.git/objects: 68
+Only in ../../application-hub-context/.git/objects: 6c
+Only in ../../application-hub-context/.git/objects: 6e
+Only in ../../application-hub-context/.git/objects: 70
+Only in ../../application-hub-context/.git/objects: 71
+Only in ../../application-hub-context/.git/objects: 72
+Only in ../../application-hub-context/.git/objects: 75
+Only in ../../application-hub-context/.git/objects: 7d
+Only in ../../application-hub-context/.git/objects: 81
+Only in ../../application-hub-context/.git/objects: 84
+Only in ../../application-hub-context/.git/objects: 87
+Only in ../../application-hub-context/.git/objects: 8a
+Only in ../../application-hub-context/.git/objects: 92
+Only in ../../application-hub-context/.git/objects: 94
+Only in ../../application-hub-context/.git/objects: 9b
+Only in ../../application-hub-context/.git/objects: 9c
+Only in ../../application-hub-context/.git/objects: 9f
+Only in ../../application-hub-context/.git/objects: a6
+Only in ../../application-hub-context/.git/objects: aa
+Only in ../../application-hub-context/.git/objects: ab
+Only in ../../application-hub-context/.git/objects: ac
+Only in ../../application-hub-context/.git/objects: ad
+Only in ../../application-hub-context/.git/objects: b3
+Only in ../../application-hub-context/.git/objects: b5
+Only in ../../application-hub-context/.git/objects: b8
+Only in ../../application-hub-context/.git/objects: b9
+Only in ../../application-hub-context/.git/objects: c0
+Only in ../../application-hub-context/.git/objects: c2
+Only in ../../application-hub-context/.git/objects: c3
+Only in ../../application-hub-context/.git/objects: c4
+Only in ../../application-hub-context/.git/objects: c6
+Only in ../../application-hub-context/.git/objects: c7
+Only in ../../application-hub-context/.git/objects: ca
+Only in ../../application-hub-context/.git/objects: cc
+Only in ../../application-hub-context/.git/objects: cd
+Only in ../../application-hub-context/.git/objects: d5
+Only in ../../application-hub-context/.git/objects: de
+Only in ../../application-hub-context/.git/objects: e4
+Only in ../../application-hub-context/.git/objects: ea
+Only in ../../application-hub-context/.git/objects: ed
+Only in ../../application-hub-context/.git/objects: f3
+Only in ../../application-hub-context/.git/objects: fd
+Only in ./.git/objects/pack: pack-84a160dd0d2792d181248a53d098c7e3902c7780.idx
+Only in ./.git/objects/pack: pack-84a160dd0d2792d181248a53d098c7e3902c7780.pack
+Only in ./.git/objects/pack: pack-84a160dd0d2792d181248a53d098c7e3902c7780.rev
+Only in ../../application-hub-context/.git/objects/pack: pack-8537d9e400020b09af548357f2cc0dab704d432e.idx
+Only in ../../application-hub-context/.git/objects/pack: pack-8537d9e400020b09af548357f2cc0dab704d432e.pack
+Only in ../../application-hub-context/.git/objects/pack: pack-8537d9e400020b09af548357f2cc0dab704d432e.rev
+diff -ru ../../application-hub-context/.git/packed-refs ./.git/packed-refs
+--- ../../application-hub-context/.git/packed-refs	2026-04-07 15:48:48
++++ ./.git/packed-refs	2026-04-14 09:45:21
+@@ -1,2 +1,13 @@
+ # pack-refs with: peeled fully-peeled sorted 
++d03e5ea95c2cf93c138d81a70bb5f5617c6416fd refs/remotes/origin/EOEPCA-898
++b85321f5ec7830815da28be0b6e930d927d7bb45 refs/remotes/origin/develop
++e0099dc335ac807f87e4df3cb5a171b2454d79ea refs/remotes/origin/eoepca-beta01
++bd26bc7391014b28f662e817f8d26fecca4ca2e1 refs/remotes/origin/gh-pages
+ 6d804aa34d04de5a3682a1ab8ecd548fb832ca96 refs/remotes/origin/main
++c4eb90de585101a67233227373ad12e2a33bf448 refs/remotes/origin/multi-cluster
++e29235214a869d1c30405f5f3e591bafb6b5302f refs/remotes/origin/secrets
++e29235214a869d1c30405f5f3e591bafb6b5302f refs/tags/1.2.0
++3f2666dfed4199c5ad1bf0cf243cfc0b22a6b098 refs/tags/1.5.0
++3f2666dfed4199c5ad1bf0cf243cfc0b22a6b098 refs/tags/v1.5.0
++1a90dec35f7ab72a779590be35723e237fd82f6a refs/tags/v1.5.1
++e0cd5336256c3d0179867a279c86fceedb0f0283 refs/tags/v1.5.2
+Only in ../../application-hub-context/.git/refs/heads: feature
+Only in ../../application-hub-context/.git/refs/heads: gh-pages
+Only in ../../application-hub-context/.git: shallow
+diff -ru ../../application-hub-context/Taskfile.yaml ./Taskfile.yaml
+--- ../../application-hub-context/Taskfile.yaml	2026-04-13 18:22:28
++++ ./Taskfile.yaml	2026-04-14 09:45:21
+@@ -35,23 +35,6 @@
+       vars:
+         CONFIG: "{{.CONFIG}}"
+ 
+-  # Config generation
+-
+-  generate_tutorial_config:
+-    desc: |
+-      Generates tutorial-config.yml with all remote desktop profiles + the
+-      sample Streamlit app profile. Requires app-hub-configurator installed
+-      (pip install app-hub-configurator) and iga-streamlit-demo cloned
+-      alongside this repository.
+-      Usage: task generate_tutorial_config
+-    cmds:
+-    - dump-config
+-        --profiles-dir ../iga-streamlit-demo/profile
+-        --profiles sample_app_slug,remote_desktop,qgis_remote_desktop,panoply_remote_desktop,snap_remote_desktop
+-        --groups group-a,group-b,group-c
+-        --storage-class-rwo hostpath
+-        --output tutorial-config.yml
+-
+   # Python models
+ 
+   create_models:
+diff -ru ../../application-hub-context/application_hub_context/app_hub_context.py ./application_hub_context/app_hub_context.py
+--- ../../application-hub-context/application_hub_context/app_hub_context.py	2026-04-08 16:43:50
++++ ./application_hub_context/app_hub_context.py	2026-04-14 09:45:21
+@@ -978,7 +978,9 @@
+                         f"Create init container {init_container.name}"
+                     )
+                     try:
+-                        init_container_spec = {
++                        self.spawner.init_containers.extend(
++                            [
++                                {
+                                     "name": init_container.name,
+                                     "image": init_container.image,
+                                     "command": init_container.command,
+@@ -989,13 +991,8 @@
+                                         for volume_mount in init_container.volume_mounts
+                                     ],
+                                 }
+-                        # Inherit the spawner UID so the init container can
+-                        # write to the workspace volume (owned by that UID).
+-                        if self.spawner.uid is not None:
+-                            init_container_spec["securityContext"] = {
+-                                "runAsUser": self.spawner.uid
+-                            }
+-                        self.spawner.init_containers.extend([init_container_spec])
++                            ]
++                        )
+                     except Exception as err:
+                         self.spawner.log.error(f"Unexpected {err}, {type(err)}")
+                         self.spawner.log.error(
+Only in ../../application-hub-context: config.yaml
+Only in .: demo.pacth
+Only in ../../application-hub-context/docs: notebook-app.md
+Only in ../../application-hub-context/docs: tutorial.md
+diff -ru ../../application-hub-context/files/hub/jupyterhub_config.py ./files/hub/jupyterhub_config.py
+--- ../../application-hub-context/files/hub/jupyterhub_config.py	2026-04-08 17:50:41
++++ ./files/hub/jupyterhub_config.py	2026-04-14 09:45:21
+@@ -173,27 +173,6 @@
+ c.KubeSpawner.pre_spawn_hook = pre_spawn_hook
+ c.KubeSpawner.post_stop_hook = post_stop_hook
+ 
+-
+-async def modify_pod_hook(spawner, pod):
+-    """Ensure init containers run with the same UID as the main container.
+-
+-    KubeSpawner applies `uid` only to the main container's securityContext.
+-    Init containers created by app_hub_context inherit none, so they run as
+-    the image's default user (UID 1000).  When the workspace volume already
+-    contains files written by UID 1001 (the spawner UID), those init
+-    containers cannot chmod/write them — triggering a back-off restart.
+-    """
+-    uid = getattr(spawner, "uid", None)
+-    if uid is not None and pod.spec.init_containers:
+-        from kubernetes_asyncio.client.models import V1SecurityContext
+-        for container in pod.spec.init_containers:
+-            if container.security_context is None:
+-                container.security_context = V1SecurityContext(run_as_user=uid)
+-    return pod
+-
+-
+-c.KubeSpawner.modify_pod_hook = modify_pod_hook
+-
+ c.JupyterHub.template_paths = [
+     "/opt/jupyterhub/template",
+     "/usr/local/share/jupyterhub/templates",
+diff -ru ../../application-hub-context/mkdocs.yml ./mkdocs.yml
+--- ../../application-hub-context/mkdocs.yml	2026-04-13 17:35:35
++++ ./mkdocs.yml	2026-04-14 09:45:21
+@@ -15,8 +15,6 @@
+   - admonition
+   - pymdownx.highlight
+   - pymdownx.superfences
+-  - pymdownx.tabbed:
+-      alternate_style: true
+   - attr_list
+ 
+ plugins:
+@@ -30,5 +28,3 @@
+   - Configurator Reference: 'README.md'
+   - JupyterHub API: 'jupyterhub-api.md'
+   - Hands-on: 'hands-on.md'
+-  - Tutorial: 'tutorial.md'
+-  - Notebook Application: 'notebook-app.md'
+Only in ../../application-hub-context: sample-app-config.yml
+Only in ../../application-hub-context: sample-app-config.yml.save
+Only in ../../application-hub-context: scripts
+Only in ../../application-hub-context: site
+diff -ru ../../application-hub-context/skaffold.yaml ./skaffold.yaml
+--- ../../application-hub-context/skaffold.yaml	2026-04-14 09:05:03
++++ ./skaffold.yaml	2026-04-14 09:45:21
+@@ -1,32 +1,15 @@
+ apiVersion: skaffold/v4beta9
+ kind: Config
+-
+-# Prerequisites:
+-#   - Docker with buildx support (for multi-arch builds)
+-#   - kubectl configured to target your cluster
+-#   - skaffold >= 2.17
+-#
+-# Quick start:
+-#   Docker Desktop (Mac/Windows):  skaffold run -p hostpath
+-#   kind / minikube:               skaffold run -p tutorial
+-#
+-# Access the hub at http://localhost:8000 after deployment.
+-
+ build:
+   artifacts:
+     - image: hubimage
+ 
++
+ deploy:
+   helm:
+-    # Workaround: application-hub chart 4.0.2 generates a `standardMode` field
+-    # that Kubernetes 1.25+ rejects during OpenAPI validation (correct field is `defaultMode`).
+-    flags:
+-      install: ["--disable-openapi-validation"]
+-      upgrade: ["--disable-openapi-validation"]
+     releases:
+       - name: jupyterhub
+-        repo: https://eoepca.github.io/helm-charts-dev/
+-        remoteChart: application-hub
++        remoteChart: eoepca/application-hub
+         namespace: jupyter
+         version: 4.0.2
+         createNamespace: true
+@@ -44,7 +27,6 @@
+         setFiles:
+           configYml: ./files/hub/config.yml
+           jupyterConfig: ./files/hub/jupyterhub_config.py
+-
+ manifests:
+   rawYaml:
+   - sk-k8s/cluster-role-binding.yaml
+@@ -54,14 +36,14 @@
+ portForward:
+ - resourceType: service
+   resourceName: application-hub-proxy-public
+-  namespace: jupyter
+-  port: 80
+-  localPort: 8000
++  namespace: jupyter # Optional, if you are using a specific namespace
++  port: 80 # Target port on the pod
++  localPort: 8000 # Local port on your machine
+ 
+ profiles:
+ 
+-  # Build and deploy using the latest-dev hub image (no local build)
+   - name: develop
++
+     patches:
+       - op: add
+         path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.name
+@@ -70,8 +52,8 @@
+         path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.tag
+         value: latest-dev
+ 
+-  # Deploy using the latest stable hub image (no local build)
+   - name: main
++  
+     patches:
+       - op: add
+         path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.name
+@@ -80,55 +62,9 @@
+         path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.tag
+         value: latest
+ 
+-  # Deploy with a user-provided config (copy your config.yml to custom-config.yml first)
+   - name: custom
+-    patches:
+-      - op: add
+-        path: /deploy/helm/releases/0/setFiles/configYml
+-        value: custom-config.yml
+ 
+-  # Tutorial: deploy the hub with the sample application profile
+-  # Usage: skaffold run -p tutorial
+-  - name: tutorial
+     patches:
+       - op: add
+-        path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.name
+-        value: ghcr.io/eoepca/application-hub
+-      - op: add
+-        path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.tag
+-        value: latest
+-      - op: replace
+         path: /deploy/helm/releases/0/setFiles/configYml
+-        value: tutorial-config.yml
+-
+-  # Docker Desktop on Mac/Windows (storage class = hostpath)
+-  # Usage: skaffold run -p hostpath
+-  - name: hostpath
+-    build:
+-      artifacts: []   # use pre-built hub image, no local build
+-    patches:
+-      - op: add
+-        path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.name
+-        value: ghcr.io/eoepca/application-hub
+-      - op: add
+-        path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.tag
+-        value: latest
+-      - op: replace
+-        path: /deploy/helm/releases/0/setValues/jupyterhub.hub.db.pvc.storageClassName
+-        value: hostpath
+-      - op: replace
+-        path: /deploy/helm/releases/0/setValues/jupyterhub.hub.extraEnv.STORAGE_CLASS
+-        value: hostpath
+-      - op: replace
+-        path: /deploy/helm/releases/0/setFiles/configYml
+-        value: tutorial-config.yml
+-
+-  # Build multi-platform hub image (linux/amd64 + linux/arm64)
+-  # Requires Docker buildx: docker buildx create --use
+-  # Multi-platform builds must push to a registry — local daemon is not supported.
+-  # Usage: skaffold build -p multi-arch --default-repo ghcr.io/<your-org>
+-  - name: multi-arch
+-    build:
+-      platforms:
+-        - linux/amd64
+-        - linux/arm64
++        value: custom-config.yml
+Only in ../../application-hub-context: tutorial-config.yml
+Only in ../../application-hub-context: tutorial-config.yml.save
