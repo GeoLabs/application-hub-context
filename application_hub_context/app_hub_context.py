@@ -978,9 +978,7 @@ class DefaultApplicationHubContext(ApplicationHubContext):
                         f"Create init container {init_container.name}"
                     )
                     try:
-                        self.spawner.init_containers.extend(
-                            [
-                                {
+                        init_container_spec = {
                                     "name": init_container.name,
                                     "image": init_container.image,
                                     "command": init_container.command,
@@ -991,8 +989,13 @@ class DefaultApplicationHubContext(ApplicationHubContext):
                                         for volume_mount in init_container.volume_mounts
                                     ],
                                 }
-                            ]
-                        )
+                        # Inherit the spawner UID so the init container can
+                        # write to the workspace volume (owned by that UID).
+                        if self.spawner.uid is not None:
+                            init_container_spec["securityContext"] = {
+                                "runAsUser": self.spawner.uid
+                            }
+                        self.spawner.init_containers.extend([init_container_spec])
                     except Exception as err:
                         self.spawner.log.error(f"Unexpected {err}, {type(err)}")
                         self.spawner.log.error(

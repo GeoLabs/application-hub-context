@@ -1,15 +1,32 @@
 apiVersion: skaffold/v4beta9
 kind: Config
+
+# Prerequisites:
+#   - Docker with buildx support (for multi-arch builds)
+#   - kubectl configured to target your cluster
+#   - skaffold >= 2.17
+#
+# Quick start:
+#   Docker Desktop (Mac/Windows):  skaffold run -p hostpath
+#   kind / minikube:               skaffold run -p tutorial
+#
+# Access the hub at http://localhost:8000 after deployment.
+
 build:
   artifacts:
     - image: hubimage
 
-
 deploy:
   helm:
+    # Workaround: application-hub chart 4.0.2 generates a `standardMode` field
+    # that Kubernetes 1.25+ rejects during OpenAPI validation (correct field is `defaultMode`).
+    flags:
+      install: ["--disable-openapi-validation"]
+      upgrade: ["--disable-openapi-validation"]
     releases:
       - name: jupyterhub
-        remoteChart: eoepca/application-hub
+        repo: https://eoepca.github.io/helm-charts-dev/
+        remoteChart: application-hub
         namespace: jupyter
         version: 4.0.2
         createNamespace: true
@@ -27,6 +44,7 @@ deploy:
         setFiles:
           configYml: ./files/hub/config.yml
           jupyterConfig: ./files/hub/jupyterhub_config.py
+
 manifests:
   rawYaml:
   - sk-k8s/cluster-role-binding.yaml
@@ -36,14 +54,14 @@ manifests:
 portForward:
 - resourceType: service
   resourceName: application-hub-proxy-public
-  namespace: jupyter # Optional, if you are using a specific namespace
-  port: 80 # Target port on the pod
-  localPort: 8000 # Local port on your machine
+  namespace: jupyter
+  port: 80
+  localPort: 8000
 
 profiles:
 
+  # Build and deploy using the latest-dev hub image (no local build)
   - name: develop
-
     patches:
       - op: add
         path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.name
@@ -52,8 +70,8 @@ profiles:
         path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.tag
         value: latest-dev
 
+  # Deploy using the latest stable hub image (no local build)
   - name: main
-  
     patches:
       - op: add
         path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.name
@@ -62,9 +80,55 @@ profiles:
         path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.tag
         value: latest
 
+  # Deploy with a user-provided config (copy your config.yml to custom-config.yml first)
   - name: custom
-
     patches:
       - op: add
         path: /deploy/helm/releases/0/setFiles/configYml
         value: custom-config.yml
+
+  # Tutorial: deploy the hub with the sample application profile
+  # Usage: skaffold run -p tutorial
+  - name: tutorial
+    patches:
+      - op: add
+        path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.name
+        value: ghcr.io/eoepca/application-hub
+      - op: add
+        path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.tag
+        value: latest
+      - op: replace
+        path: /deploy/helm/releases/0/setFiles/configYml
+        value: tutorial-config.yml
+
+  # Docker Desktop on Mac/Windows (storage class = hostpath)
+  # Usage: skaffold run -p hostpath
+  - name: hostpath
+    build:
+      artifacts: []   # use pre-built hub image, no local build
+    patches:
+      - op: add
+        path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.name
+        value: ghcr.io/eoepca/application-hub
+      - op: add
+        path: /deploy/helm/releases/0/setValueTemplates/jupyterhub.hub.image.tag
+        value: latest
+      - op: replace
+        path: /deploy/helm/releases/0/setValues/jupyterhub.hub.db.pvc.storageClassName
+        value: hostpath
+      - op: replace
+        path: /deploy/helm/releases/0/setValues/jupyterhub.hub.extraEnv.STORAGE_CLASS
+        value: hostpath
+      - op: replace
+        path: /deploy/helm/releases/0/setFiles/configYml
+        value: tutorial-config.yml
+
+  # Build multi-platform hub image (linux/amd64 + linux/arm64)
+  # Requires Docker buildx: docker buildx create --use
+  # Multi-platform builds must push to a registry — local daemon is not supported.
+  # Usage: skaffold build -p multi-arch --default-repo ghcr.io/<your-org>
+  - name: multi-arch
+    build:
+      platforms:
+        - linux/amd64
+        - linux/arm64

@@ -35,6 +35,23 @@ tasks:
       vars:
         CONFIG: "{{.CONFIG}}"
 
+  # Config generation
+
+  generate_tutorial_config:
+    desc: |
+      Generates tutorial-config.yml with all remote desktop profiles + the
+      sample Streamlit app profile. Requires app-hub-configurator installed
+      (pip install app-hub-configurator) and iga-streamlit-demo cloned
+      alongside this repository.
+      Usage: task generate_tutorial_config
+    cmds:
+    - dump-config
+        --profiles-dir ../iga-streamlit-demo/profile
+        --profiles sample_app_slug,remote_desktop,qgis_remote_desktop,panoply_remote_desktop,snap_remote_desktop
+        --groups group-a,group-b,group-c
+        --storage-class-rwo hostpath
+        --output tutorial-config.yml
+
   # Python models
 
   create_models:

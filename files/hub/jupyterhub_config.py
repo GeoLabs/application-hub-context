@@ -173,6 +173,27 @@ c.KubeSpawner.options_form = custom_options_form
 c.KubeSpawner.pre_spawn_hook = pre_spawn_hook
 c.KubeSpawner.post_stop_hook = post_stop_hook
 
+
+async def modify_pod_hook(spawner, pod):
+    """Ensure init containers run with the same UID as the main container.
+
+    KubeSpawner applies `uid` only to the main container's securityContext.
+    Init containers created by app_hub_context inherit none, so they run as
+    the image's default user (UID 1000).  When the workspace volume already
+    contains files written by UID 1001 (the spawner UID), those init
+    containers cannot chmod/write them — triggering a back-off restart.
+    """
+    uid = getattr(spawner, "uid", None)
+    if uid is not None and pod.spec.init_containers:
+        from kubernetes_asyncio.client.models import V1SecurityContext
+        for container in pod.spec.init_containers:
+            if container.security_context is None:
+                container.security_context = V1SecurityContext(run_as_user=uid)
+    return pod
+
+
+c.KubeSpawner.modify_pod_hook = modify_pod_hook
+
 c.JupyterHub.template_paths = [
     "/opt/jupyterhub/template",
     "/usr/local/share/jupyterhub/templates",

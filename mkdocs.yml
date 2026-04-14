@@ -15,6 +15,8 @@ markdown_extensions:
   - admonition
   - pymdownx.highlight
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - attr_list
 
 plugins:
@@ -28,3 +30,5 @@ nav:
   - Configurator Reference: 'README.md'
   - JupyterHub API: 'jupyterhub-api.md'
   - Hands-on: 'hands-on.md'
+  - Tutorial: 'tutorial.md'
+  - Notebook Application: 'notebook-app.md'
