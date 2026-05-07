@@ -27,8 +27,6 @@ nav:
   - Introduction: 'index.md'
   - Kubernetes: 'k8s.md'
   - Configuration: 'configuration.md'
-  - Configurator Reference: 'README.md'
   - JupyterHub API: 'jupyterhub-api.md'
   - Hands-on: 'hands-on.md'
   - Tutorial: 'tutorial.md'
-  - Notebook Application: 'notebook-app.md'

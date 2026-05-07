@@ -75,8 +75,8 @@ parent/
 git clone https://github.com/EOEPCA/iga-streamlit-demo ../iga-streamlit-demo
 ```
 
-> [!TIP]
-> If you cloned the repository, a `pyproject.toml` is available.  Run `pip install -e .` inside a virtual environment to install all dev dependencies at once.
+!!! tip "Virtual environment"
+    If you cloned the repository, a `pyproject.toml` is available.  Run `pip install -e .` inside a virtual environment to install all dev dependencies at once.
 
 ### Generate `tutorial-config.yml`
 
@@ -90,8 +90,8 @@ This runs two commands in sequence:
 
 The result is a `tutorial-config.yml` ready to be loaded by Skaffold.
 
-> [!WARNING]
-> Any manual change to `tutorial-config.yml` will be overwritten on the next `task generate_tutorial_config`.  To modify the `iga-streamlit-demo` profile, edit `profile/iga_profiles.py` in the [`iga-streamlit-demo`](https://github.com/EOEPCA/iga-streamlit-demo) repository.
+!!! warning "Do not edit by hand"
+    Any manual change to `tutorial-config.yml` will be overwritten on the next `task generate_tutorial_config`.  To modify the `iga-streamlit-demo` profile, edit `profile/iga_profiles.py` in the [`iga-streamlit-demo`](https://github.com/EOEPCA/iga-streamlit-demo) repository.
 
 ---
 
@@ -142,8 +142,8 @@ On the profile selection page you will see **Sample Streamlit App**. Click **Sta
 
 The app displays runtime information injected by the Hub (user name, service prefix, …) and links to the next steps of this tutorial.
 
-> [!TIP]
-> The initialisation job (`hub-content-init`) automatically creates `group-a`, `group-b`, and `group-c` and adds `jovyan`, `alice`, and `bob` to each. You can log in as any of these users.
+!!! tip "User groups"
+    The initialisation job (`hub-content-init`) automatically creates `group-a`, `group-b`, and `group-c` and adds `jovyan`, `alice`, and `bob` to each. You can log in as any of these users.
 
 ---
 
