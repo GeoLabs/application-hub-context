@@ -100,7 +100,7 @@ The result is a `tutorial-config.yml` ready to be loaded by Skaffold.
 The `tutorial` Skaffold profile deploys the hub using the pre-built stable image together with the [sample application](https://github.com/EOEPCA/iga-streamlit-demo) profile, so no local Docker build is required.
 
 ```bash
-skaffold run -p tutorial
+skaffold dev -p tutorial
 ```
 
 Skaffold will:
@@ -207,61 +207,76 @@ docker push ghcr.io/<your-org>/my-app:latest
 
 ## 6. Add your application to the Hub
 
-### 6.1 Write a profile
+ApplicationHub uses **`dump-config`** to generate profile configurations from
+Python classes. This avoids writing YAML by hand and keeps the profile
+definition co-located with the application source code.
 
-Copy `tutorial-config.yml` to `custom-config.yml` and add a new profile:
+### 6.1 Create the profile module
 
-```yaml
-profiles:
+In your application repository, create a `profile/` directory with a Python
+module that registers your profile.
 
-- id: sample_app            # keep the existing sample profile
-  # … (unchanged)
+```python
+# profile/my_profiles.py
+from configurator.apps import profile_registry
+from configurator.apps.base import BaseAppProfile
 
-- id: my_app                # your new profile
-  groups:
-  - group-a
-  definition:
-    display_name: My EO Dashboard
-    description: My custom Earth Observation dashboard.
-    slug: my_app_slug
-    default: false
-    kubespawner_override:
-      image: ghcr.io/<your-org>/my-app:latest
-      cpu_limit: 1
-      cpu_guarantee: null
-      mem_limit: 2G
-      mem_guarantee: null
-      extra_resource_limits: {}
-      extra_resource_guarantees: {}
-  volumes:
-  - name: workspace-volume
-    claim_name: workspace-claim
-    size: 5Gi
-    storage_class: standard
-    access_modes:
-    - ReadWriteOnce
-    persist: false
-    volume_mount:
-      name: workspace-volume
-      mount_path: /home/jovyan
-  pod_env_vars:
-    HOME: /home/jovyan
+class MyAppProfile(BaseAppProfile):
+    slug = "my_app"
+    display_name = "My EO Dashboard"
+    description = "My custom Earth Observation dashboard."
+    image = "ghcr.io/<your-org>/my-app:latest"
+
+    cpu_limit = 1
+    mem_limit = "2G"
+
+    pod_env_vars = {"HOME": "/home/jovyan"}
+
+    def get_default_volumes(self):
+        return []   # no persistent storage needed
+
+profile_registry.register(MyAppProfile)
 ```
 
-For a full reference of all profile fields, see the [Configuration](configuration.md) page.
+### 6.2 Generate the configuration
 
-### 6.2 Validate the config (optional)
+Use `dump-config` with `--profiles-dir` pointing to your `profile/` directory:
 
 ```bash
-task check_schema CONFIG=custom-config.yml
+dump-config \
+  --profiles-dir ../my-app/profile \
+  --profiles my_app \
+  --groups group-a,group-b,group-c \
+  --storage-class-rwo standard \
+  --output ../my-app/sample-app-config.yml
 ```
 
-### 6.3 Deploy with the custom profile
+!!! tip "List available profiles"
+    `dump-config --profiles-dir ../my-app/profile --list-profiles` shows all
+    slugs registered by the module.
+
+### 6.3 Validate the config (optional)
 
 ```bash
-skaffold run -p custom
+task check_schema CONFIG=../my-app/sample-app-config.yml
 ```
 
-Skaffold patches the Hub's config map with your `custom-config.yml`. After the Hub pod restarts, your new profile will appear on the login page.
+### 6.4 Append to the Hub config and reload
+
+Append the generated profile to `tutorial-config.yml`:
+
+```bash
+# The profiles key already exists — append only the list items
+tail -n +2 ../my-app/sample-app-config.yml >> tutorial-config.yml
+
+kubectl create configmap application-hub-jupyter-config -n jupyter \
+  --from-file=config.yml=tutorial-config.yml \
+  --dry-run=client -o yaml | kubectl apply -f -
+
+kubectl rollout restart deployment/application-hub-hub -n jupyter
+kubectl rollout status deployment/application-hub-hub -n jupyter
+```
+
+Your new profile will appear on the Server Options page after the Hub restarts.
 
 
