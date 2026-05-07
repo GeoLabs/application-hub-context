@@ -8,7 +8,6 @@ This tutorial walks you through the full ApplicationHub lifecycle on a local Kub
 4. [Log in and use the sample application](#4-log-in-and-use-the-sample-application)
 5. [Build your own application](#5-build-your-own-application)
 6. [Add your application to the Hub](#6-add-your-application-to-the-hub)
-7. [Next steps](#7-next-steps)
 
 ---
 
